@@ -70,17 +70,17 @@ services:
       dockerfile: ./packages/web/Dockerfile
       args:
         - APP_ENV=prod
-        - BASE_URL=http://localhost:3000
+        - BASE_URL=http://localhost:3001
         - SERVER_BASE_URL=http://localhost:4000
-        - HIGHLIGHTS_BASE_URL=http://localhost:3000
+        - HIGHLIGHTS_BASE_URL=http://localhost:3001
     container_name: "omnivore-web"
     ports:
-      - "3000:8080"
+      - "3001:8080"
     environment:
       - NEXT_PUBLIC_APP_ENV=prod
-      - NEXT_PUBLIC_BASE_URL=http://localhost:3000
+      - NEXT_PUBLIC_BASE_URL=http://localhost:3001
       - NEXT_PUBLIC_SERVER_BASE_URL=http://localhost:4000
-      - NEXT_PUBLIC_HIGHLIGHTS_BASE_URL=http://localhost:3000
+      - NEXT_PUBLIC_HIGHLIGHTS_BASE_URL=http://localhost:3001
     depends_on:
       api:
         condition: service_healthy
@@ -91,7 +91,7 @@ services:
       dockerfile: ./packages/content-fetch/Dockerfile
     container_name: "omnivore-content-fetch"
     ports:
-      - "9090:8080"
+      - "9091:8080"
     environment:
       - JWT_SECRET=some_secret
       - VERIFICATION_TOKEN=some_token
